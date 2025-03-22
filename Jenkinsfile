@@ -1,6 +1,8 @@
 pipeline {
     agent any
     environment {
+    MINIKUBE_HOME = '/home/student/.minikube'  // Path to Minikube if it's not default
+    KUBEVERSION = '1.20.0'  // Optional: Define Kubernetes version if needed
         DOCKER_IMAGE_FRONTEND = "frontend:latest"  // Frontend Docker image name
         DOCKER_IMAGE_BACKEND = "backend:latest"  // Backend Docker image name
         CONTAINER_NAME_FRONTEND = "docker-k8s-frontend-app"  // Frontend container name
@@ -22,7 +24,7 @@ pipeline {
                     sh '''
                     eval $(minikube docker-env)
                     '''
-                }
+                }k
             }
         }
 
