@@ -61,6 +61,11 @@ pipeline {
                 script {
                     // Apply Kubernetes deployment and service YAMLs using kubectl
                     sh '''
+                    kubectl delete -f k8s/backend-deployment.yaml
+                    kubectl delete -f k8s/frontend-deployment.yaml
+                    kubectl delete -f k8s/service.yaml
+                    kubectl delete -f k8s/configmap.yaml
+
                     kubectl apply -f k8s/backend-deployment.yaml
                     kubectl apply -f k8s/frontend-deployment.yaml
                     kubectl apply -f k8s/service.yaml
